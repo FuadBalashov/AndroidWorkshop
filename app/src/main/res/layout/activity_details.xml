@@ -11,6 +11,7 @@
   tools:context="fbalashov.imagealigator.DetailsActivity">
 
   <TextView
+    android:id="@+id/post_id"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Success we are in a new Activity!"/>
