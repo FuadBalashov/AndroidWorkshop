@@ -1,7 +1,8 @@
 package fbalashov.memeworkshop;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DetailsActivity extends AppCompatActivity {
@@ -15,7 +16,8 @@ public class DetailsActivity extends AppCompatActivity {
     TextView textView = (TextView)findViewById(R.id.post_id);
     textView.setText(imageId);
 
+    ImageView imageView = (ImageView) findViewById(R.id.imageView);
     MemeClient memeClient = new MemeClient();
-    memeClient.displayMeme(imageId, this, null);
+    memeClient.displayMeme(imageId, this, imageView);
   }
 }

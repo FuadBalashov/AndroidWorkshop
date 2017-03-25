@@ -11,6 +11,8 @@ import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -64,12 +66,18 @@ public class MemeClient {
           throw new IOException("Unexpected response code: " + response);
         }
 
-        handler.post(new Runnable() {
-          @Override
-          public void run() {
-            Toast.makeText(activity, "Response was successful", Toast.LENGTH_SHORT).show();
-          }
-        });
+        try {
+          final String link = getMemeLink(imageId, response);
+          handler.post(new Runnable() {
+            @Override
+            public void run() {
+              Toast.makeText(activity, "Response was successful", Toast.LENGTH_SHORT).show();
+              Picasso.with(activity).load(link).into(imageView);
+            }
+          });
+        } catch (JSONException e) {
+          e.printStackTrace();
+        }
       }
     });
   }
